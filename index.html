@@ -1,3 +1,37 @@
+<?php
+  
+  
+  //MySQL DB Login
+  
+  //include unique case key from database
+  
+  /*these variables contain an arrays, therefore iteration function is required.*/
+  $specialNeeds = $_POST['specialNeeds']; 
+  $adviceType = $_POST['adviceType'];
+  
+  
+  //specialNeeds iteration
+  //adviceType iteration
+  
+  
+  
+  if(isset($_POST['Submit'])) {
+  
+  $to = "legalAdmin@lsbu.ac.uk";
+  $subject = "Form Submission";
+  $message = "Here are the detail of case #" . /*unique case key such as*/ 5238 . ": \n
+  Name: " . $_POST['name'] . "\tAge: " . $_POST['age'] . "\tGender: " . $_POST['gender'] . "\nPostcode: " . $_POST['postcode'] . "\tLanguage: " . $_POST['language' . "\nEmail: " . $email . "\nTel: " . $_POST['tel'] . "\nDoes this client have a disability? " . $_POST['disability'] . "\n\nOther's Name: " . $_POST['otherName'] . "\tOther's Age: " . $_POST['otherAge'] . "\tOther's Gender: " . $_POST['otherGender'] . "\nOther's Ethnicity: " . $_POST['otherEth'] . "\nYear in which relationship began: " . $_POST['relYear'] . "\nYear in which parties married/entered civil partnership: " . $_POST['marriageYear'] . "\nYear in which parties separated: " . $_POST['sepYear'] . "\nFinancial abuse: " . $_POST['finAbuse'] . "\tVerbal abuse: " . $_POST['verAbuse'] . "\tPhysical abuse: " . $_POST['physAbuse'] . "\n\nNumber of children: " . $_POST['childCount'] . "\nSpecial needs: " $specialNeeds /*this variable contains an array, therefore iteration function is required.*/ . "\nIs the child in danger?: " . $_POST['childAbuse'] . "\n" . $_POST['childAbuseDetail'] . "\n\nType of advice needed: " . $adviceType /*this variable contains an array, therefore iteration function is required.*/ . "\n" . "$_POST['otherDetail']" . "\nIs the enquiry urgent?: " . $_POST['urgentEnquiry'] . "\nDeadline: " .  $_POST['deadlineDate'] . "\n" . $_POST['deadlineTasks'] . "\nHow the advice clinic was discovered: " . $_POST['discoverySelect'] . "\nShould the advice clinic send emails months after enquiry? " . $_POST['emailInFuture'];
+  $headers = //include header thing
+  
+  
+  mail($to, $subject, $message, $headers);
+  exit;
+  
+  
+  }
+  
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -101,15 +135,15 @@
 				<form class="form">
 					<div class="row">
 						<div class="form-group col">
-							<label for="nameInput">First Name</label>
-							<input type="name" class="form-control" id="nameInput" aria-describedby="nameHelp" placeholder="Enter your first name"> <small id="nameHelp" class="form-text text-muted">We won't require your last name or any other identifying information.</small> </div>
+							<label for="name">First Name</label>
+							<input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="Enter your first name"> <small id="nameHelp" class="form-text text-muted">We won't require your last name or any other identifying information.</small> </div>
 						<div class="form-group col">
 							<label for="ageInput">Age</label>
-							<input type="age" class="form-control" id="ageInput" aria-describedby="ageHelp" placeholder="How old are you?" min="0" step="1" data-bind="value:replyNumber"> </div>
+							<input type="number" class="form-control" id="age" name="age" aria-describedby="ageHelp" placeholder="How old are you?" min="0" step="1" data-bind="value:replyNumber"> </div>
 						<div>
 							<div style="width: 60%;" class="form-group">
-								<label for="genderSelect">Gender</label>
-								<select class="form-control" id="genderSelect">
+								<label for="gender">Gender</label>
+								<select class="form-control" id="gender" name="gender">
 									<option selected>Choose...</option>
 									<option>Female</option>
 									<option>Male</option>
@@ -119,35 +153,35 @@
 							</div>
 						</div>
 						<div class="form-group col">
-							<label for="langInput">What is your native language?</label>
-							<input type="language" class="form-control" id="langInput" aria-describedby="langHelp" placeholder="Enter your first language"> </div>
+							<label for="language">What is your native language?</label>
+							<input type="text" class="form-control" id="language" name="language" placeholder="Enter your first language"> </div>
 						<div class="form-group col mb-2">
-							<label for="locInput">Where do you live?</label>
-							<input type="name" class="form-control" id="locInput" aria-describedby="locHelp" placeholder="Enter the first half of your postcode"> <small id="locHelp" class="form-text text-muted">We won't be asking for your full address.</small> </div>
+							<label for="postcode">Where do you live?</label>
+							<input type="text" class="form-control" id="postcode" name="postcode" aria-describedby="locHelp" placeholder="Enter the first half of your postcode"> <small id="locHelp" class="form-text text-muted">We won't be asking for your full address.</small> </div>
 						<div class="row">
 							<div class="form-group col">
-								<label for="emailInput">Email</label>
-								<input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Enter your email"> </div>
+								<label for="email">Email</label>
+								<input type="email" class="form-control" id="email" name="email" placeholder="Enter your email"> </div>
 							<div class="form-group col mb-2 ms-4">
-								<label for="mobileNo">Mobile number</label>
-								<input type="tel" class="form-control" id="mobileNo" aria-describedby="numberHelp" placeholder="Enter your phone number"> <small id="numberHelp" class="form-text text-muted">Optional.</small> </div>
+								<label for="tel">Mobile number</label>
+								<input type="tel" class="form-control" id="tel" name="tel" aria-describedby="numberHelp" placeholder="Enter your phone number"> <small id="numberHelp" class="form-text text-muted">Optional.</small> </div>
 						</div>
 						<div class="form-group form-check mb-2" id="disabilityDiv">
 							<label class="form-check-label float-xl-start" for="disability">Do you consider yourself to have a disability?</label>
-							<input type="checkbox" class="form-check-input ms-2 mt-.7" id="disability">
+							<input type="checkbox" class="form-check-input ms-2 mt-.7" id="disability" name="disability">
 							<br /> <small id="disability" class="form-text text-muted">This includes {Disability List}.</small> </div>
 						<h4>Details Of The Other Party</h4>
 						<div class="row">
 							<div class="form-group col">
-								<label for="nameInput">First Name</label>
-								<input type="name" class="form-control" id="nameInput" aria-describedby="nameHelp" placeholder="Enter their first name"> </div>
+								<label for="otherName">First Name</label>
+								<input type="text" class="form-control" id="otherName" name="otherName" placeholder="Enter their first name"> </div>
 							<div class="form-group col">
-								<label for="ageInput">Age</label>
-								<input type="age" class="form-control" id="ageInput" aria-describedby="ageHelp" placeholder="How old are they?" min="0" step="1" data-bind="value:replyNumber"> </div>
+								<label for="otherAge">Age</label>
+								<input type="number" class="form-control" id="otherAge" name="otherAge" placeholder="How old are they?" min="0" step="1" data-bind="value:replyNumber"> </div>
 							<div>
 								<div style="width: 60%;" class="form-group">
-									<label for="genderSelect">Gender</label>
-									<select class="form-control" id="genderSelect">
+									<label for="otherGender">Gender</label>
+									<select class="form-control" id="otherGender" name="otherGender">
 										<option selected>Choose...</option>
 										<option>Female</option>
 										<option>Male</option>
@@ -158,8 +192,8 @@
 							</div>
 							<div>
 								<div style="width: 60%;" class="form-group">
-									<label for="ethSelect">Ethnicity</label>
-									<select class="form-control" id="ethSelect">
+									<label for="otherEth">Ethnicity</label>
+									<select class="form-control" id="otherEth" name="otherEth">
 										<option selected>Choose...</option>
 										<option>Asian or Asian British</option>
 										<option>Black, African, Black British or Caribbean</option>
@@ -172,15 +206,15 @@
 							</div>
 							<div>
 								<div style="width: 60%;" class="form-group col">
-									<label for="yearInput">What year did your relationship with the other party begin?</label>
-									<input type="text" class="form-control" id="datepicker" data-provide="datepicker" placeholder="Select a year"> </div>
+									<label for="relYear">What year did your relationship with the other party begin?</label>
+									<input type="date" class="form-control" id="datepicker" name="relYear" data-provide="datepicker" placeholder="Select a year"> </div>
 							</div>
 							<div class="form-group col mt-4">
-								<label for="yearInput">If you are married to them or in a civil partnership with them, in which year was the marriage or civil partnership?</label>
-								<input type="text" class="form-control" id="datepicker" data-provide="datepicker" placeholder="Select a year"> </div>
+								<label for="marriageYear">If you are married to them or in a civil partnership with them, in which year was the marriage or civil partnership?</label>
+								<input type="date" class="form-control" id="datepicker" name="marriageYear" data-provide="datepicker" placeholder="Select a year"> </div>
 							<div class="form-group col mt-5">
-								<label for="yearInput">If you have separated, when did you separate?</label>
-								<input type="text" class="form-control" id="datepicker" data-provide="datepicker" placeholder="Select a year"> </div>
+								<label for="sepYear">If you have separated, when did you separate?</label>
+								<input type="date" class="form-control" id="datepicker" name="sepYear" data-provide="datepicker" placeholder="Select a year"> </div>
 							<div class="mt-4"> <span>Does the other party tell you what you can spend money on?</span>
 								<div class="form-check form-check-inline mx-2">
 									<input class="form-check-input" type="radio" name="finAbuse" id="yes" value="yes">
@@ -235,130 +269,130 @@
 								</div>
 								<div class="my-4"> <span>Do any of your children have the following special needs?</span>
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="speech">
+										<input class="form-check-input" type="checkbox" value="A" id="speech" name="specialNeeds[]">
 										<label class="form-check-label" for="speech"> Speech and/or language delays </label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="autism">
+										<input class="form-check-input" type="checkbox" value="B" id="autism" name="specialNeeds[]">
 										<label class="form-check-label" for="autism"> Autism Spectrum Disorder </label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="cognitive">
+										<input class="form-check-input" type="checkbox" value="C" id="cognitive" name="specialNeeds[]">
 										<label class="form-check-label" for="cognitive"> Cognitive delays </label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="psychosocial">
+										<input class="form-check-input" type="checkbox" value="D" id="psychosocial" name="specialNeeds[]">
 										<label class="form-check-label" for="psychosocial"> Social & emotional disorders </label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="learning">
+										<input class="form-check-input" type="checkbox" value="E" id="learning" name="specialNeeds[]">
 										<label class="form-check-label" for="learning"> Learning differences/disabilities </label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="other">
+										<input class="form-check-input" type="checkbox" value="F" id="other" name="specialNeeds[]">
 										<label class="form-check-label" for="other"> Other </label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" id="none">
+										<input class="form-check-input" type="checkbox" value="G" id="none" name="specialNeeds[]">
 										<label class="form-check-label" for="none"> None of my children have any special needs. </label>
 									</div>
 								</div>
 								<div class="mt-4"> <span>Are any of your children at risk of suffering serious injury?</span>
 									<div class="form-check form-check-inline mx-2">
-										<input class="form-check-input" type="radio" name="physAbuse" id="yes" value="yes">
+										<input class="form-check-input" type="radio" name="childAbuse" id="yes" value="yes">
 										<label class="form-check-label" for="yes">Yes</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="radio" name="physAbuse" id="no" value="no">
+										<input class="form-check-input" type="radio" name="childAbuse" id="no" value="no">
 										<label class="form-check-label" for="no">No</label>
 									</div>
 								</div>
 								<div class="form-group col my-2">
-									<label for="detailInput">If you answered yes to the previous question, can you please provide more detail?</label>
-									<textarea type="text" class="form-control" id="detailInput" aria-describedby="detailHelp" placeholder="Enter text" rows=3></textarea>
+									<label for="childAbuseDetail">If you answered yes to the previous question, can you please provide more detail?</label>
+									<textarea type="text" class="form-control" id="childAbuseDetail" name="childAbuseDetail" aria-describedby="detailHelp" placeholder="Enter text" rows=3></textarea>
 								</div>
 								<h4>Contact</h4>
 								<div class="form-group">
-									<label class=" control-label" for="adviceType">What would you like to talk to us about?</label>
+									<label class=" control-label" for="adviceType[]">What would you like to talk to us about?</label>
 									<div class="col-md-4">
 										<div class="checkbox">
 											<label for="adviceType-0">
-												<input type="checkbox" name="adviceType" id="adviceType-0" value=""> relationship counselling </label>
+												<input type="checkbox" id="adviceType-0" value="A" name="adviceType[]"> relationship counselling </label>
 										</div>
 										<div class="checkbox">
 											<label for="adviceType-1">
-												<input type="checkbox" name="adviceType" id="adviceType-1" value=""> mediation </label>
+												<input type="checkbox" id="adviceType-1" value="B" name="adviceType[]"> mediation </label>
 										</div>
 										<div class="checkbox">
 											<label for="adviceType-2">
-												<input type="checkbox" name="adviceType" id="adviceType-2" value=""> protection from domestic abuse </label>
+												<input type="checkbox" id="adviceType-2" value="C" name="adviceType[]"> protection from domestic abuse </label>
 										</div>
 										<div class="checkbox">
 											<label for="adviceType-3">
-												<input type="checkbox" name="adviceType" id="adviceType-3" value=""> divorce (married or in a civil partnership) </label>
+												<input type="checkbox" id="adviceType-3" value="D" name="adviceType[]"> divorce (married or in a civil partnership) </label>
 										</div>
 										<div class="checkbox">
 											<label for="adviceType-4">
-												<input type="checkbox" name="adviceType" id="adviceType-4" value=""> separation (not married - not in a civil partnership </label>
+												<input type="checkbox" id="adviceType-4" value="E" name="adviceType[]"> separation (not married - not in a civil partnership </label>
 										</div>
 										<div class="checkbox">
 											<label for="adviceType-5">
-												<input type="checkbox" name="adviceType" id="adviceType-5" value=""> arrangements for your children's care international child abduction </label>
+												<input type="checkbox" id="adviceType-5" value="F" name="adviceType[]"> arrangements for your children's care international child abduction </label>
 										</div>
 										<div class="checkbox">
 											<label for="adviceType-6">
-												<input type="checkbox" name="adviceType" id="adviceType-6" value=""> child maintenance </label>
+												<input type="checkbox" id="adviceType-6" value="G" name="adviceType[]"> child maintenance </label>
 										</div>
 										<div class="checkbox">
 											<label for="adviceType-7">
-												<input type="checkbox" name="adviceType" id="adviceType-7" value=""> financial settlement / arrangements </label>
+												<input type="checkbox" id="adviceType-7" value="H" name="adviceType[]"> financial settlement / arrangements </label>
 										</div>
 										<div class="checkbox">
 											<label for="adviceType-8">
-												<input type="checkbox" name="adviceType" id="adviceType-8" value=""> an existing court case </label>
+												<input type="checkbox" id="adviceType-8" value="I" name="adviceType[]"> an existing court case </label>
 										</div>
 										<div class="checkbox">
 											<label for="adviceType-9">
-												<input type="checkbox" name="adviceType" id="adviceType-9" value=""> make an application to court </label>
+												<input type="checkbox" id="adviceType-9" value="J" name="adviceType[]"> make an application to court </label>
 										</div>
 										<div class="checkbox">
 											<label for="adviceType-10">
-												<input type="checkbox" name="adviceType" id="adviceType-10" value=""> vary an existing court order </label>
+												<input type="checkbox" id="adviceType-10" value="K" name="adviceType[]"> vary an existing court order </label>
 										</div>
 										<div class="checkbox">
 											<label for="adviceType-11">
-												<input type="checkbox" name="adviceType" id="adviceType-11" value=""> to enforce an existing order </label>
+												<input type="checkbox" id="adviceType-11" value="L" name="adviceType[]"> to enforce an existing order </label>
 										</div>
 										<div class="checkbox">
 											<label for="adviceType-12">
-												<input type="checkbox" name="adviceType" id="adviceType-12" value=""> other </label>
+												<input type="checkbox" id="adviceType-12" value="M" name="adviceType[]"> other </label>
 										</div>
 									</div>
 								</div>
 								<div class="form-group col my-2">
-									<label for="detailInput">If you answered other to the previous question, can you briefly describe what you need help with?</label>
-									<textarea type="text" class="form-control" id="detailInput" aria-describedby="detailHelp" placeholder="Enter text" rows=3></textarea>
+									<label for="otherDetail">If you answered other to the previous question, can you briefly describe what you need help with?</label>
+									<textarea type="text" class="form-control" id="otherDetail" name="otherDetail" aria-describedby="detailHelp" placeholder="Enter text" rows=3></textarea>
 								</div>
 								<div class="mt-4"> <span>Is your enquiry urgent?</span>
 									<div class="form-check form-check-inline mx-2">
-										<input class="form-check-input" type="radio" name="urgent" id="yes" value="yes">
+										<input class="form-check-input" type="radio" name="urgentEnquiry" id="yes" value="yes">
 										<label class="form-check-label" for="yes">Yes</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="radio" name="urgent" id="no" value="no">
+										<input class="form-check-input" type="radio" name="urgentEnquiry" id="no" value="no">
 										<label class="form-check-label" for="no">No</label>
 									</div>
 									<div class="form-group col mt-4">
-										<label for="yearInput">If there is a deadline to be met, please select the date of the deadline.</label>
-										<input type="text" class="form-control" id="datepicker" data-provide="datepicker" placeholder="Select a year"> </div>
+										<label for="deadlineDate">If there is a deadline to be met, please select the date of the deadline.</label>
+										<input type="date" class="form-control" id="deadlineDate" name="deadlineDate" data-provide="datepicker" placeholder="Select a year"> </div>
 									<div class="form-group col my-2">
-										<label for="detailInput">If there is a deadline to be met, please describe the tasks that must be done before then. </label>
-										<textarea type="text" class="form-control" id="detailInput" aria-describedby="detailHelp" placeholder="Enter text" rows=3></textarea>
+										<label for="deadlineTasks">If there is a deadline to be met, please describe the tasks that must be done before then. </label>
+										<textarea type="text" class="form-control" id="deadlineTasks" name="deadlineTasks" placeholder="Enter text" rows=3></textarea>
 									</div>
 									<div>
 										<div style="width: 60%;" class="form-group">
 											<label for="discoverySelect">How did you find out about us?</label>
-											<select class="form-control" id="discoverySelect">
+											<select class="form-control" id="discoverySelect" name="discoverySelect">
 												<option selected>Choose...</option>
 												<option>LSBU</option>
 												<option>Word of mouth</option>
@@ -370,13 +404,13 @@
 											</select>
 										</div>
 									</div>
-									<div class="mt-4"> <span>Your email address will be stored on our systems even after we have dealt with your enquiry. Would you like to be emailed months after, in order for us to know how things have gone?</span>
+									<div class="mt-4"> <span>Your email address will be stored on our system after we have dealt with your enquiry. After your consultation with us, would you like to be emailed for a follow-up on your case?</span>
 										<div class="form-check form-check-inline mx-2">
-											<input class="form-check-input" type="radio" name="futureContact" id="yes" value="yes">
+											<input class="form-check-input" type="radio" name="emailInFuture" id="yes" value="yes">
 											<label class="form-check-label" for="yes">Yes</label>
 										</div>
 										<div class="form-check form-check-inline">
-											<input class="form-check-input" type="radio" name="futureContact" id="no" value="no">
+											<input class="form-check-input" type="radio" name="emailInFuture" id="no" value="no">
 											<label class="form-check-label" for="no">No</label>
 										</div>
 									</div>
@@ -384,7 +418,7 @@
 				</div>
 				</div>
 				<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-					<input style="width: 10%;" class="btn btn-primary" type="submit" value="Submit"> </div>
+					<input style="width: 10%;" class="btn btn-primary" type="submit" value="Submit" href="#"> </div>
 				</div>
 				</div>
 			</div>
