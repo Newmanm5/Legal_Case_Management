@@ -1,6 +1,6 @@
 <?php
 
-$config = parse_ini_file('root/dbconfig.ini' , truee);
+$config = parse_ini_file('build/php.ini' , truee);
 $server = $config['database']['server'] ;
 $username = $config['database']['username'];
 $password = $config['database']['password'];
