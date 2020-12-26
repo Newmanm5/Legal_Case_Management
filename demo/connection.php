@@ -1,10 +1,13 @@
 <?php
-$server = "lsbufamilyhub";
-$un = "lsbucompsci_e8";
-$pw = "legaladvice202X";
+
+$config = parse_ini_file('root/dbconfig.ini' , truee);
+$server = $config['database']['server'] ;
+$username = $config['database']['username'];
+$password = $config['database']['password'];
+$dbname = $config['database']['dbname'];
 
 try {
-  $conn = new PDO("mysql:host=$server;dbname=lsubfhcases", $un, $pw);
+  $conn = new PDO("mysql:host=$server;dbname=$dbname", $username, $passwordl
   // set the PDO error mode to exception
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   echo "Connected successfully";
