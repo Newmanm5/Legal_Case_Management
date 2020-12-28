@@ -1,6 +1,6 @@
 <?php
 //import private data from hidden file
-$config = parse_ini_file('lib/php.ini' , truee);
+$config = parse_ini_file('lib/php.ini' , true);
 $server = $config['database']['server'] ;
 $username = $config['database']['username'];
 $password = $config['database']['password'];
