@@ -1,2 +1,2 @@
-# Legal-Clinic
-An application form and database for free legal aid from LSBU. Version 3, started in late December by Akpeki, with little knowledge in Bootstrap or PHP. This version focuses adds PHP functionality and preparation for MySQL functions. (PrinceJohn-lvopanda is listed as a contributor. This is a moniker.)
+# LSBU Family Law Legal Clinic Form
+This is the final version (15/01/2021) of a relatively simple, user-friendly Bootstrap form with PHP and MySQL functionality, created by and for LSBU. A functional demo can be found [here](https://newmanm5.github.io/Legal_Case_Management/), while code snippets can be found in the [`embed`](https://github.com/Newmanm5/Legal_Case_Management/tree/main/embed) folder.
