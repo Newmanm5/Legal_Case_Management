@@ -4,3 +4,4 @@ This is the final version (14/01/2021) of a relatively simple, user-friendly Boo
 The email function is dependent on PHPMailer, which can be installed on the system wherever this is used, or uploaded to the site's includes/lib directories.
 ***
 The admin dashboard embed has collapsable functions, within the PHP function. Class and Id names must be edited appropriately and manual jQuery functions appended to the file.
+***
