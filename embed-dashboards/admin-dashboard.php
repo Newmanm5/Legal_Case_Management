@@ -78,7 +78,7 @@ require_once('lib/connection.php');
                                     <td>{$row['status']}</td>
                                     <td><span style='letter-spacing: 25px;'><a data-bs-toggle='collapse' data-bs-target='#extraData'><i class='bi bi-eye'></i></a><i class='bi bi-trash'></i></span></td>
                                     </tr>
-                                    <tr class='collapse' id='extraData'>
+                                    <tr class='changeClassToCollapseWhenFunctionIsAdded' id='changeIdToExtraData'>
                                     <td>
                                     <u>Case Details</u>
                                     <br />
@@ -152,7 +152,7 @@ require_once('lib/connection.php');
         <form method="POST" action="">
         <button name="getCaseID" type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#caseID">Get Case ID</button>
         <br />
-        <div style="width: 50%;" class="collapse" id="caseID">
+        <div style="width: 50%;" class="changeclasstocollapse" id="changeclasstocaseID">
         <br />Case ID for Students: <b>$caseID</b></div>
         <br />
         <button class="btn btn-outline-secondary" name="assign" type="submit">Assign Case</button>
