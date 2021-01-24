@@ -66,8 +66,10 @@ require_once('lib/connection.php');
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchALL();
-        
+        $x = 0;
         foreach ($data as $row){
+            
+                                    $x++;
                                     $caseID = $row['caseID'];
                                     $submissionDate = date_create_from_format("Y-m-d", $row['submissionDate'])->format("d M Y");
                                     echo <<<HTML
@@ -76,9 +78,9 @@ require_once('lib/connection.php');
                                     <td>$submissionDate</td>
                                     <td>{$row['name']}</td>
                                     <td>{$row['status']}</td>
-                                    <td><span style='letter-spacing: 25px;'><a data-bs-toggle='collapse' data-bs-target='#extraData'><i class='bi bi-eye'></i></a><i class='bi bi-trash'></i></span></td>
+                                    <td><span style='letter-spacing: 25px;'><a data-bs-toggle='collapse' data-bs-target='#extraData$x'><i class='bi bi-eye'></i></a><i class='bi bi-trash'></i></span></td>
                                     </tr>
-                                    <tr class='changeClassToCollapseWhenFunctionIsAdded' id='changeIdToExtraData'>
+                                    <tr class='collapse' id='extraData$x'>
                                     <td>
                                     <u>Case Details</u>
                                     <br />
@@ -149,10 +151,10 @@ require_once('lib/connection.php');
         <b>Details:</b>  {$row['childAbuseDetail']}
         </td>
         <td>
-        <form method="POST" action="">
-        <button name="getCaseID" type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#caseID">Get Case ID</button>
+        <form method="GET" action="">
+        <button name="getCaseID" type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#caseID$x">Get Case ID</button>
         <br />
-        <div style="width: 50%;" class="changeclasstocollapse" id="changeclasstocaseID">
+        <div style="width: 20%; word-wrap: break-word;" class="collapse" id="caseID$x">
         <br />Case ID for Students: <b>$caseID</b></div>
         <br />
         <button class="btn btn-outline-secondary" name="assign" type="submit">Assign Case</button>
