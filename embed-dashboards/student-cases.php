@@ -158,8 +158,9 @@ if(isset($_POST['submit'])) {
     
     require('lib/connection.php');
     
+        $caseID = $row['caseID'];    
         $notes = $_POST['notes'];
-        $sql = "UPDATE lfhcases SET notes = CONCAT(notes, CHAR(13) , :notes) WHERE caseID = :caseID";
+        $sql = "UPDATE lfhcases SET notes = CONCAT_WS(CHAR(13), notes, :notes) WHERE caseID = :caseID";
         $stmt = $conn->prepare($sql);
         $stmt->execute(array(
             ':notes' => $notes,
@@ -168,9 +169,9 @@ if(isset($_POST['submit'])) {
             
     echo "<script>url = window.location.href + '#'; window.location.replace(url); if ( window.location.href == url ){ url = url.slice(0, - 1); window.location.replace(url) }</script>"; 
     }
-    
-
 }
+
+
     }
 	
 	?>
