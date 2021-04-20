@@ -17,5 +17,5 @@ This is the final version (14/01/2021) of a relatively simple, user-friendly Boo
 
 ├── nodemailer@6.5.0
 
-└── sqlite3@5.0.2
+├── sqlite3@5.0.2
 ***
